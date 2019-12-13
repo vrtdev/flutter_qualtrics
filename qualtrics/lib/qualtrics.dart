@@ -24,4 +24,42 @@ class Qualtrics {
     await _init();
     return _channel.invokeMethod('evaluateTargetingLogic');
   }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<bool> display() async {
+    await _init();
+    return _channel.invokeMethod('display');
+  }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<void> displayTarget(String target) async {
+    assert(target != null);
+    await _init();
+    return _channel.invokeMethod('displayTarget', {'target': target});
+  }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<bool> hide() async {
+    await _init();
+    return _channel.invokeMethod('hide');
+  }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<void> registerViewVisit(String viewName) async {
+    assert(viewName != null);
+    await _init();
+    return _channel.invokeMethod('registerViewVisit', {'viewName': viewName});
+  }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<void> resetTimer() async {
+    await _init();
+    return _channel.invokeMethod('resetTimer');
+  }
+
+  /// TODO(jeremie-movify): add documentation
+  Future<void> resetViewCounter() async {
+    await _init();
+    return _channel.invokeMethod('resetViewCounter');
+  }
 }
