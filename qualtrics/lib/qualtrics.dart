@@ -25,39 +25,44 @@ class Qualtrics {
     return _channel.invokeMethod('evaluateTargetingLogic');
   }
 
-  /// TODO(jeremie-movify): add documentation
+  /// Displays the specified creative in the specified view controller.
+  /// Typically, you need to evaluate whether the creative should be displayed
+  /// by evaluating an intercept's logic using the
+  /// evaluateTargetingLogicWithCompletion method.
   Future<bool> display() async {
     await _init();
     return _channel.invokeMethod('display');
   }
 
-  /// TODO(jeremie-movify): add documentation
+  /// Displays the survey from the URL when the view controller was initialized.
   Future<void> displayTarget(String target) async {
     assert(target != null);
     await _init();
     return _channel.invokeMethod('displayTarget', {'target': target});
   }
 
-  /// TODO(jeremie-movify): add documentation
+  ///
   Future<bool> hide() async {
     await _init();
     return _channel.invokeMethod('hide');
   }
 
-  /// TODO(jeremie-movify): add documentation
+  /// Records a visit to a particular view.
   Future<void> registerViewVisit(String viewName) async {
     assert(viewName != null);
     await _init();
     return _channel.invokeMethod('registerViewVisit', {'viewName': viewName});
   }
 
-  /// TODO(jeremie-movify): add documentation
+  /// Resets the usage timer that is available to the intercept on the server
+  /// as Time Spent in App.
   Future<void> resetTimer() async {
     await _init();
     return _channel.invokeMethod('resetTimer');
   }
 
-  /// TODO(jeremie-movify): add documentation
+  /// Resets the view count to zero. It is available to the intercept as the
+  /// View Count value in the intercept display logic.
   Future<void> resetViewCounter() async {
     await _init();
     return _channel.invokeMethod('resetViewCounter');
