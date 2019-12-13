@@ -1,13 +1,14 @@
-import 'dart:async';
-
 import 'package:flutter/services.dart';
+import 'package:meta/meta.dart';
 
 class Qualtrics {
-  static const MethodChannel _channel =
-      const MethodChannel('qualtrics');
+  final MethodChannel _channel;
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  Qualtrics() : this._channel = const MethodChannel('vrt_qualtrics');
+
+  Qualtrics.testable(this._channel);
+
+  void initialize({@required final brandId, @required final zoneId, @required final interceptId}) {
+    _channel.invokeMethod('init', {'brandId': brandId, 'zoneId': zoneId, 'interceptId': interceptId});
   }
 }

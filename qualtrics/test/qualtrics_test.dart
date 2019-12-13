@@ -1,23 +1,25 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:qualtrics/qualtrics.dart';
+import 'package:mockito/mockito.dart';
+
+import 'mocks/mocks.dart';
 
 void main() {
-  const MethodChannel channel = MethodChannel('qualtrics');
-
-  TestWidgetsFlutterBinding.ensureInitialized();
+  Qualtrics sut;
+  MethodChannelMock methodChannelMock;
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
-    });
+    methodChannelMock = MethodChannelMock();
+    sut = Qualtrics.testable(methodChannelMock);
+    TestWidgetsFlutterBinding.ensureInitialized();
   });
 
-  tearDown(() {
-    channel.setMockMethodCallHandler(null);
-  });
-
-  test('getPlatformVersion', () async {
-    expect(await Qualtrics.platformVersion, '42');
+  test('Initialization', () async {
+    sut.initialize(brandId: 'testBrandId', zoneId: 'testZoneId', interceptId: 'testInterceptId');
+    verify(methodChannelMock.invokeMethod('init', {
+      'brandId': 'testBrandId',
+      'zoneId': 'testZoneId',
+      'interceptId': 'testInterceptId',
+    }));
   });
 }
