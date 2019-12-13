@@ -10,16 +10,19 @@ void main() {
 
   setUp(() {
     methodChannelMock = MethodChannelMock();
-    sut = Qualtrics.testable(methodChannelMock);
+    sut = Qualtrics.testable(methodChannelMock,
+        brandId: 'testBrandId', zoneId: 'testZoneId', interceptId: 'testInterceptId');
     TestWidgetsFlutterBinding.ensureInitialized();
   });
 
-  test('Initialization', () async {
-    sut.initialize(brandId: 'testBrandId', zoneId: 'testZoneId', interceptId: 'testInterceptId');
-    verify(methodChannelMock.invokeMethod('init', {
-      'brandId': 'testBrandId',
-      'zoneId': 'testZoneId',
-      'interceptId': 'testInterceptId',
-    }));
+  void _verifyInitializationMethodCalled() {
+    verify(methodChannelMock
+        .invokeMethod('init', {'brandId': 'testBrandId', 'zoneId': 'testZoneId', 'interceptId': 'testInterceptId'}));
+  }
+
+  test('Evaluate Targeting Logic', () async {
+    await sut.evaluateTargetingLogic();
+    _verifyInitializationMethodCalled();
+    verify(methodChannelMock.invokeMethod('evaluateTargetingLogic'));
   });
 }
