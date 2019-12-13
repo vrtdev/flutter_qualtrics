@@ -10,14 +10,21 @@ class Qualtrics {
 
   Future<void> _initialization;
 
-  Qualtrics({@required this.brandId, @required this.zoneId, @required this.interceptId})
+  Qualtrics(
+      {@required this.brandId,
+      @required this.zoneId,
+      @required this.interceptId})
       : this._channel = const MethodChannel('vrt_qualtrics');
 
   @visibleForTesting
-  Qualtrics.testable(this._channel, {@required this.brandId, @required this.zoneId, @required this.interceptId});
+  Qualtrics.testable(this._channel,
+      {@required this.brandId,
+      @required this.zoneId,
+      @required this.interceptId});
 
-  Future<void> _init() async => _initialization ??=
-      _channel.invokeMethod('init', {'brandId': brandId, 'zoneId': zoneId, 'interceptId': interceptId});
+  Future<void> _init() async => _initialization ??= _channel.invokeMethod(
+      'init',
+      {'brandId': brandId, 'zoneId': zoneId, 'interceptId': interceptId});
 
   /// Causes the Qualtrics framework to evaluate the intercept's logic asynchronously.
   Future<bool> evaluateTargetingLogic() async {
