@@ -1,6 +1,0 @@
-framework module qualtrics {
-  umbrella header "qualtrics-umbrella.h"
-
-  export *
-  module * { export * }
-}
