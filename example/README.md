@@ -1,6 +1,6 @@
-# qualtrics_example
+# qualtrics_flutter_example
 
-Demonstrates how to use the qualtrics plugin.
+Demonstrates how to use the qualtrics_flutter plugin.
 
 ## Getting Started
 

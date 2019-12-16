@@ -1,9 +1,9 @@
-name: qualtrics_example
-description: Demonstrates how to use the qualtrics plugin.
+name: qualtrics_flutter_example
+description: Demonstrates how to use the qualtrics_flutter plugin.
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.6.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  qualtrics:
+  qualtrics_flutter:
     path: ../
 
 # For information on the generic Dart part of this file, see the

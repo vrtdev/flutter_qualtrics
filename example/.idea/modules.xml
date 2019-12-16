@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/qualtrics_example.iml" filepath="$PROJECT_DIR$/qualtrics_example.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android/qualtrics_example_android.iml" filepath="$PROJECT_DIR$/android/qualtrics_example_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/qualtrics_flutter_example.iml" filepath="$PROJECT_DIR$/qualtrics_flutter_example.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/qualtrics_flutter_example_android.iml" filepath="$PROJECT_DIR$/android/qualtrics_flutter_example_android.iml" />
     </modules>
   </component>
 </project>
