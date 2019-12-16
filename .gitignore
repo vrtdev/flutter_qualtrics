@@ -3,6 +3,7 @@
 # Files and directories created by pub
 .dart_tool/
 .packages
+.pub/
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
 pubspec.lock
@@ -21,13 +22,43 @@ doc/api/
 *.js.map
 
 .DS_Store
-.dart_tool/
 
-.packages
-.pub/
-
-build/
 .vscode/
-
 .idea/
 .iml
+.atom/
+
+flutter_export_environment.sh
+
+examples/all_plugins/pubspec.yaml
+
+Podfile
+Podfile.lock
+Pods/
+.symlinks/
+**/Flutter/App.framework/
+**/Flutter/Flutter.framework/
+**/Flutter/Generated.xcconfig
+**/Flutter/flutter_assets/
+ServiceDefinitions.json
+xcuserdata/
+*.xcworkspace
+**/DerivedData/
+
+local.properties
+keystore.properties
+.gradle/
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+.flutter-plugins-dependencies
+*.iml
+
+GeneratedPluginRegistrant.h
+GeneratedPluginRegistrant.m
+GeneratedPluginRegistrant.java
+.flutter-plugins
+
+.project
+.classpath
+.settings
