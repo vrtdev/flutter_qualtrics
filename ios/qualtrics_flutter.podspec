@@ -18,6 +18,7 @@ documentation can be found at https://api.qualtrics
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
+  s.dependency 'Qualtrics', '1.14'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice. Only x86_64 simulators are supported.
