@@ -5,13 +5,16 @@
 Pod::Spec.new do |s|
   s.name             = 'qualtrics_flutter'
   s.version          = '0.0.1'
-  s.summary          = 'A new flutter plugin project.'
+  s.summary          = 'A Flutter plugin which bridges Qualtrics\' Mobile iOS
+   Intercept SDK.'
   s.description      = <<-DESC
-A new flutter plugin project.
+This plugin bridges Qualtrics' Mobile iOS Intercept SDK to Flutter. Official
+documentation can be found at https://api.qualtrics
+.com/docs/mobile-ios-intercept-sdk.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/vrtdev/flutter_qualtrics/'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'VRT' => 'jeremie@movify.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
