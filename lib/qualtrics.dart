@@ -14,13 +14,19 @@ class Qualtrics {
       {@required this.brandId,
       @required this.zoneId,
       @required this.interceptId})
-      : this._channel = const MethodChannel('qualtrics_flutter');
+      : assert(brandId != null),
+        assert(zoneId != null),
+        assert(interceptId != null),
+        this._channel = const MethodChannel('qualtrics_flutter');
 
   @visibleForTesting
   Qualtrics.testable(this._channel,
       {@required this.brandId,
       @required this.zoneId,
-      @required this.interceptId});
+      @required this.interceptId})
+      : assert(brandId != null),
+        assert(zoneId != null),
+        assert(interceptId != null);
 
   Future<void> _init() async => _initialization ??= _channel.invokeMethod(
       'init',
