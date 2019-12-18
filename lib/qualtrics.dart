@@ -14,7 +14,7 @@ class Qualtrics {
       {@required this.brandId,
       @required this.zoneId,
       @required this.interceptId})
-      : this._channel = const MethodChannel('vrt_qualtrics');
+      : this._channel = const MethodChannel('qualtrics_flutter');
 
   @visibleForTesting
   Qualtrics.testable(this._channel,

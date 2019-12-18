@@ -9,7 +9,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final qualtrics = Qualtrics(brandId: "testBrandId", zoneId: "testZoneId", interceptId: "testInterceptId");
+  final qualtrics = Qualtrics(
+    brandId: "",
+    zoneId: "",
+    interceptId: "",
+  );
 
   @override
   void initState() {
@@ -68,7 +72,7 @@ class _MyAppState extends State<MyApp> {
               SizedBox(height: 8),
               RaisedButton(
                 child: Text("Display target"),
-                onPressed: () => displayTarget("hello world"),
+                onPressed: () => displayTarget("https://flutter.dev/"),
               ),
               SizedBox(height: 8),
               RaisedButton(

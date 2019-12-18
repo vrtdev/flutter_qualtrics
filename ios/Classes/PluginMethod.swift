@@ -1,0 +1,45 @@
+//
+//  PluginMethod.swift
+//
+//  Created by Kymer Gryson on 02/10/2019.
+//
+
+import Foundation
+
+enum PluginMethod {
+  case `init`(InitArguments)
+  case evaluateTargetingLogic
+  case display
+  case displayTarget(DisplayTargetArguments)
+  case hide
+  case registerViewVisit(RegisterViewVisitArguments)
+  case resetTimer
+  case resetViewCounter
+  
+  public init(from call: FlutterMethodCall) throws {
+    switch call.method {
+    case "init":
+      let arguments = try InitArguments(from: call)
+      self = .`init`(arguments)
+    case "evaluateTargetingLogic":
+      self = .evaluateTargetingLogic
+    case "display":
+      self = .display
+    case "displayTarget":
+      let arguments = try DisplayTargetArguments(from: call)
+      self = .displayTarget(arguments)
+    case "hide":
+      self = .hide
+    case "registerViewVisit":
+      let arguments = try RegisterViewVisitArguments(from: call)
+      self = .registerViewVisit(arguments)
+    case "resetTimer":
+      self = .resetTimer
+    case "resetViewCounter":
+      self = .resetViewCounter
+    default:
+      throw PluginError.unhandledMethod(call)
+    }
+    
+  }
+}
