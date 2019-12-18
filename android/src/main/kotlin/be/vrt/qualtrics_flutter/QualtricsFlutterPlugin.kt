@@ -62,8 +62,12 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun evaluateTargetingLogic(result: Result) {
         Qualtrics.instance().evaluateTargetingLogic {
-            //TODO: handke targetingResult here
-            result.success(true)
+            if (it.error != null) {
+                result.success(false)
+            }
+            else {
+                result.success(it.passed())
+            }
         }
     }
 
