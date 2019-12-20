@@ -63,9 +63,8 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
     private fun evaluateTargetingLogic(result: Result) {
         Qualtrics.instance().evaluateTargetingLogic {
             if (it.error != null) {
-                result.success(false)
-            }
-            else {
+                result.error("-1", it.error.message, it.error.localizedMessage)
+            } else {
                 result.success(it.passed())
             }
         }
