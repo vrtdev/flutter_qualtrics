@@ -13,11 +13,4 @@ class MainActivity : FlutterActivity() {
         GeneratedPluginRegistrant.registerWith(flutterEngine)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        //TODO: test
-        Qualtrics.instance().initialize("BRAND ID", "PROJECT ID", "INTERCEPT ID", this)
-        //TODO: test
-    }
-
 }
