@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qualtrics_flutter/qualtrics.dart';
 import 'package:mockito/mockito.dart';
+import 'package:qualtrics_flutter/qualtrics.dart';
 
 import 'mocks/mocks.dart';
 

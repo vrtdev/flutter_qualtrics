@@ -1,4 +1,4 @@
-group 'be.vrt.qualtrics_flutter'
+group 'be.vrt.flutter_qualtrics'
 version '1.0-SNAPSHOT'
 
 buildscript {

@@ -19,18 +19,16 @@ import 'package:qualtrics/qualtrics.dart';
 
 Qualtrics SDKs setup reference : https://api.qualtrics.com/docs/mobile-ios-intercept-sdk
 
-### Android
+```dart
+final qualitrics = Qualtrics(brandId: "", zoneId: "", interceptId: "");
 
-Add the following code to your Application's `override fun onCreate()` :
+bool result = await qualtrics.evaluateTargetingLogic();
+bool result = await qualtrics.display();
+await qualtrics.hide();
+await qualtrics.displayTarget("someTarget");
 
-```kotlin
-// TODO: add documentation
-```
+await qualtrics.registerViewVisit("someViewName");
 
-### iOS
-
-Add the following code to your AppDelegate's `application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)` :
-
-```swift
-// TODO: add documentation
+await qualtrics.resetTimer();
+await qualtrics.resetViewCounter();
 ```

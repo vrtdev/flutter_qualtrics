@@ -1,4 +1,4 @@
-package be.vrt.qualtrics_flutter_example
+package be.vrt.flutter_qualtrics_example
 
 import android.os.Bundle
 import androidx.annotation.NonNull

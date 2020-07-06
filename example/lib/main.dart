@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qualtrics_flutter/qualtrics.dart';
+import 'package:flutter_qualtrics/qualtrics.dart';
 
 void main() => runApp(MyApp());
 
