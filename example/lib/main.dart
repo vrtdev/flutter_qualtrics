@@ -50,6 +50,10 @@ class _MyAppState extends State<MyApp> {
     await qualtrics.resetViewCounter();
   }
 
+  Future<void> setStringProperty(String key, String value) async {
+    await qualtrics.setStringProperty(key, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -93,6 +97,11 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text("Reset view counter"),
                 onPressed: () => resetViewCounter(),
+              ),
+              SizedBox(height: 8),
+              RaisedButton(
+                child: Text("Set some string property"),
+                onPressed: () => setStringProperty("testkey", "testvalue"),
               ),
               SizedBox(height: 8),
             ],

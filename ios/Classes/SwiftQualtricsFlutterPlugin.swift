@@ -51,6 +51,9 @@ public class SwiftQualtricsFlutterPlugin: NSObject, FlutterPlugin {
       case .resetViewCounter:
         Qualtrics.shared.resetViewCounter()
         result(true)
+      case .setStringProperty(let arguments):
+        Qualtrics.shared.properties.setString(string: arguments.key, for: arguments.value)
+        result(true)
       }
     } catch {
       result(error.asFlutterError)
