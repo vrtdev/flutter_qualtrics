@@ -13,6 +13,7 @@ object Extractor {
         REGISTER_VIEW_VISIT("registerViewVisit"),
         RESET_TIMER("resetTimer"),
         RESET_VIEW_COUNTER("resetViewCounter"),
+        SET_STRING_PROPERTY("setStringProperty"),
         UNKNOWN(null);
     }
 
@@ -25,6 +26,7 @@ object Extractor {
         data class RegisterViewVisit(@NonNull val viewName: String) : QualtricsCall()
         object ResetTimer : QualtricsCall()
         object ResetViewCounter : QualtricsCall()
+        data class SetStringProperty(@NonNull val key: String, @NonNull val value: String) : QualtricsCall()
         object Unknown : QualtricsCall()
     }
 
@@ -33,6 +35,8 @@ object Extractor {
     private const val interceptIdKey = "interceptId"
     private const val targetKey = "target"
     private const val viewNameKey = "viewName"
+    private const val keyKey = "key"
+    private const val valueKey = "value"
 
     private fun callFromRawMethodName(rawMethodName: String?): QualtricsPluginCall =
             QualtricsPluginCall.values()
@@ -50,6 +54,7 @@ object Extractor {
                 QualtricsPluginCall.REGISTER_VIEW_VISIT -> qualtricsCallFromRegisterViewVisitCall(call)
                 QualtricsPluginCall.RESET_TIMER -> QualtricsCall.ResetTimer
                 QualtricsPluginCall.RESET_VIEW_COUNTER -> QualtricsCall.ResetViewCounter
+                QualtricsPluginCall.SET_STRING_PROPERTY -> qualtricsCallFromSetStringProperty(call)
                 QualtricsPluginCall.UNKNOWN -> QualtricsCall.Unknown
             }
 
@@ -68,6 +73,12 @@ object Extractor {
     private fun qualtricsCallFromRegisterViewVisitCall(call: MethodCall): QualtricsCall =
             QualtricsCall.RegisterViewVisit(
                     call.argument(viewNameKey)!!
+            )
+
+    private fun qualtricsCallFromSetStringProperty(call: MethodCall): QualtricsCall =
+            QualtricsCall.SetStringProperty(
+                    call.argument(keyKey)!!,
+                    call.argument(valueKey)!!
             )
 
 }

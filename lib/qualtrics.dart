@@ -73,4 +73,12 @@ class Qualtrics {
     await _init();
     return _channel.invokeMethod('resetViewCounter');
   }
+
+  /// Records custom embedded data properties to support advanced intercepts logic.
+  Future<void> setStringProperty(String key, String value) async {
+    assert(key != null);
+    assert(value != null);
+    await _init();
+    return _channel.invokeMethod('setStringProperty', {'key': key, 'value': value});
+  }
 }

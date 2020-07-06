@@ -51,6 +51,7 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
             is Extractor.QualtricsCall.RegisterViewVisit -> registerViewVisit(data, result)
             is Extractor.QualtricsCall.ResetTimer -> resetTimer(result)
             is Extractor.QualtricsCall.ResetViewCounter -> resetViewCounter(result)
+            is Extractor.QualtricsCall.SetStringProperty -> setStringProperty(data, result)
             Extractor.QualtricsCall.Unknown -> result.notImplemented()
         }.exhaustive
     }
@@ -95,6 +96,11 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun resetViewCounter(result: Result) {
         Qualtrics.instance().resetViewCounter()
+        result.success(true)
+    }
+
+    private fun setStringProperty(parameter: Extractor.QualtricsCall.SetStringProperty, result: Result) {
+        Qualtrics.instance().properties.setString(parameter.key, parameter.value)
         result.success(true)
     }
 

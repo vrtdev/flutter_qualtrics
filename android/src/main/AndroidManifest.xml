@@ -2,9 +2,8 @@
     package="be.vrt.flutter_qualtrics">
 
     <application>
-        <activity android:name="com.qualtrics.digital.QualtricsSurveyActivity" />
         <activity
             android:name="com.qualtrics.digital.QualtricsPopOverActivity"
-            android:theme="@style/Theme.Transparent" />
+            android:theme="@style/Qualtrics.Theme.Transparent" />
     </application>
 </manifest>
