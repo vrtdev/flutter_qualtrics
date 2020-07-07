@@ -1,4 +1,4 @@
-package be.vrt.qualtrics_flutter
+package be.vrt.flutter_qualtrics
 
 import android.content.Context
 import androidx.annotation.NonNull
@@ -16,7 +16,7 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
     private var context: Context? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        val channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "qualtrics_flutter")
+        val channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "flutter_qualtrics")
         val plugin = QualtricsFlutterPlugin()
         plugin.context = flutterPluginBinding.applicationContext
         channel.setMethodCallHandler(plugin)
@@ -34,7 +34,7 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "qualtrics_flutter")
+            val channel = MethodChannel(registrar.messenger(), "flutter_qualtrics")
             val plugin = QualtricsFlutterPlugin()
             plugin.context = registrar.context()
             channel.setMethodCallHandler(plugin)
@@ -51,6 +51,7 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
             is Extractor.QualtricsCall.RegisterViewVisit -> registerViewVisit(data, result)
             is Extractor.QualtricsCall.ResetTimer -> resetTimer(result)
             is Extractor.QualtricsCall.ResetViewCounter -> resetViewCounter(result)
+            is Extractor.QualtricsCall.SetStringProperty -> setStringProperty(data, result)
             Extractor.QualtricsCall.Unknown -> result.notImplemented()
         }.exhaustive
     }
@@ -95,6 +96,11 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun resetViewCounter(result: Result) {
         Qualtrics.instance().resetViewCounter()
+        result.success(true)
+    }
+
+    private fun setStringProperty(parameter: Extractor.QualtricsCall.SetStringProperty, result: Result) {
+        Qualtrics.instance().properties.setString(parameter.key, parameter.value)
         result.success(true)
     }
 

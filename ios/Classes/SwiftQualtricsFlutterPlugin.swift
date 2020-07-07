@@ -8,7 +8,7 @@ public class SwiftQualtricsFlutterPlugin: NSObject, FlutterPlugin {
   var messenger: FlutterBinaryMessenger?
   
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "qualtrics_flutter", binaryMessenger: registrar.messenger())
+    let channel = FlutterMethodChannel(name: "flutter_qualtrics", binaryMessenger: registrar.messenger())
     let instance = SwiftQualtricsFlutterPlugin()
     instance.registrar = registrar
     instance.messenger = registrar.messenger()
@@ -50,6 +50,9 @@ public class SwiftQualtricsFlutterPlugin: NSObject, FlutterPlugin {
         result(true)
       case .resetViewCounter:
         Qualtrics.shared.resetViewCounter()
+        result(true)
+      case .setStringProperty(let arguments):
+        Qualtrics.shared.properties.setString(string: arguments.key, for: arguments.value)
         result(true)
       }
     } catch {

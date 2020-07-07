@@ -4,10 +4,10 @@
 
 #import "GeneratedPluginRegistrant.h"
 
-#if __has_include(<qualtrics_flutter/QualtricsFlutterPlugin.h>)
-#import <qualtrics_flutter/QualtricsFlutterPlugin.h>
+#if __has_include(<flutter_qualtrics/QualtricsFlutterPlugin.h>)
+#import <flutter_qualtrics/QualtricsFlutterPlugin.h>
 #else
-@import qualtrics_flutter;
+@import flutter_qualtrics;
 #endif
 
 @implementation GeneratedPluginRegistrant

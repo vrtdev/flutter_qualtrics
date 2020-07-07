@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qualtrics_flutter/qualtrics.dart';
+import 'package:flutter_qualtrics/qualtrics.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,9 +10,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final qualtrics = Qualtrics(
-    brandId: "",
-    zoneId: "",
-    interceptId: "",
+    brandId: "vrt",
+    zoneId: "ZN_41kI9YOXiYIJU9f",
+    interceptId: "SI_2943OzPE9m8KKjj",
   );
 
   @override
@@ -48,6 +48,10 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> resetViewCounter() async {
     await qualtrics.resetViewCounter();
+  }
+
+  Future<void> setStringProperty(String key, String value) async {
+    await qualtrics.setStringProperty(key, value);
   }
 
   @override
@@ -93,6 +97,11 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text("Reset view counter"),
                 onPressed: () => resetViewCounter(),
+              ),
+              SizedBox(height: 8),
+              RaisedButton(
+                child: Text("Set some string property"),
+                onPressed: () => setStringProperty("testkey", "testvalue"),
               ),
               SizedBox(height: 8),
             ],

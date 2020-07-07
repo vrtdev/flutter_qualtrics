@@ -1,5 +1,5 @@
+import 'package:flutter_qualtrics/qualtrics.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qualtrics_flutter/qualtrics.dart';
 import 'package:mockito/mockito.dart';
 
 import 'mocks/mocks.dart';
@@ -60,5 +60,11 @@ void main() {
     await sut.resetViewCounter();
     _verifyInitializationMethodCalled();
     verify(methodChannelMock.invokeMethod('resetViewCounter'));
+  });
+
+  test('Set String Property', () async {
+    await sut.setStringProperty('key1', 'myval');
+    _verifyInitializationMethodCalled();
+    verify(methodChannelMock.invokeMethod('setStringProperty', {'key': 'key1', 'value': 'myval'}));
   });
 }

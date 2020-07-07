@@ -38,3 +38,8 @@ struct DisplayTargetArguments: FlutterArguments {
 struct RegisterViewVisitArguments: FlutterArguments {
   let viewName: String
 }
+
+struct SetStringPropertyArguments: FlutterArguments {
+  let key: String
+  let value: String
+}
