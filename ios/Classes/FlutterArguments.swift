@@ -43,3 +43,8 @@ struct SetStringPropertyArguments: FlutterArguments {
   let key: String
   let value: String
 }
+
+struct SetNumberPropertyArguments: FlutterArguments {
+  let key: String
+  let value: Double
+}
