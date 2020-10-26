@@ -16,6 +16,7 @@ enum PluginMethod {
   case resetTimer
   case resetViewCounter
   case setStringProperty(SetStringPropertyArguments)
+  case setNumberProperty(SetNumberPropertyArguments)
   
   public init(from call: FlutterMethodCall) throws {
     switch call.method {
@@ -41,6 +42,9 @@ enum PluginMethod {
     case "setStringProperty":
       let arguments = try SetStringPropertyArguments(from: call)
       self = .setStringProperty(arguments)
+    case "setNumberProperty":
+      let arguments = try SetNumberPropertyArguments(from: call)
+      self = .setNumberProperty(arguments)
     default:
       throw PluginError.unhandledMethod(call)
     }

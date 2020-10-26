@@ -53,6 +53,7 @@ gradlew.bat
 gradle-wrapper.jar
 .flutter-plugins-dependencies
 *.iml
+.last_build_id
 
 GeneratedPluginRegistrant.h
 GeneratedPluginRegistrant.m

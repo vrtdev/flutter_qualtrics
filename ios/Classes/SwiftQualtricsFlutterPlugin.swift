@@ -54,6 +54,9 @@ public class SwiftQualtricsFlutterPlugin: NSObject, FlutterPlugin {
       case .setStringProperty(let arguments):
         Qualtrics.shared.properties.setString(string: arguments.value, for: arguments.key)
         result(true)
+      case .setNumberProperty(let arguments):
+        Qualtrics.shared.properties.setNumber(number: arguments.value, for: arguments.key)
+        result(true)
       }
     } catch {
       result(error.asFlutterError)
