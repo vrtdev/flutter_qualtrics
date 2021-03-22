@@ -52,6 +52,7 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
             is Extractor.QualtricsCall.ResetTimer -> resetTimer(result)
             is Extractor.QualtricsCall.ResetViewCounter -> resetViewCounter(result)
             is Extractor.QualtricsCall.SetStringProperty -> setStringProperty(data, result)
+            is Extractor.QualtricsCall.SetNumberProperty -> setNumberProperty(data, result)
             Extractor.QualtricsCall.Unknown -> result.notImplemented()
         }.exhaustive
     }
@@ -101,6 +102,11 @@ public class QualtricsFlutterPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun setStringProperty(parameter: Extractor.QualtricsCall.SetStringProperty, result: Result) {
         Qualtrics.instance().properties.setString(parameter.key, parameter.value)
+        result.success(true)
+    }
+
+    private fun setNumberProperty(parameter: Extractor.QualtricsCall.SetNumberProperty, result: Result) {
+        Qualtrics.instance().properties.setNumber(parameter.key, parameter.value)
         result.success(true)
     }
 

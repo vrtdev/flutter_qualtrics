@@ -54,6 +54,10 @@ class _MyAppState extends State<MyApp> {
     await qualtrics.setStringProperty(key, value);
   }
 
+  Future<void> setNumberProperty(String key, double value) async {
+    await qualtrics.setNumberProperty(key, value);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -102,6 +106,11 @@ class _MyAppState extends State<MyApp> {
               RaisedButton(
                 child: Text("Set some string property"),
                 onPressed: () => setStringProperty("testkey", "testvalue"),
+              ),
+              SizedBox(height: 8),
+              RaisedButton(
+                child: Text("Set some number property"),
+                onPressed: () => setNumberProperty("testnum", 42.0),
               ),
               SizedBox(height: 8),
             ],

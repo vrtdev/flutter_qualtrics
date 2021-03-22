@@ -14,6 +14,7 @@ object Extractor {
         RESET_TIMER("resetTimer"),
         RESET_VIEW_COUNTER("resetViewCounter"),
         SET_STRING_PROPERTY("setStringProperty"),
+        SET_NUMBER_PROPERTY("setNumberProperty"),
         UNKNOWN(null);
     }
 
@@ -27,6 +28,7 @@ object Extractor {
         object ResetTimer : QualtricsCall()
         object ResetViewCounter : QualtricsCall()
         data class SetStringProperty(@NonNull val key: String, @NonNull val value: String) : QualtricsCall()
+        data class SetNumberProperty(@NonNull val key: String, @NonNull val value: Double) : QualtricsCall()
         object Unknown : QualtricsCall()
     }
 
@@ -55,6 +57,7 @@ object Extractor {
                 QualtricsPluginCall.RESET_TIMER -> QualtricsCall.ResetTimer
                 QualtricsPluginCall.RESET_VIEW_COUNTER -> QualtricsCall.ResetViewCounter
                 QualtricsPluginCall.SET_STRING_PROPERTY -> qualtricsCallFromSetStringProperty(call)
+                QualtricsPluginCall.SET_NUMBER_PROPERTY -> qualtricsCallFromSetNumberProperty(call)
                 QualtricsPluginCall.UNKNOWN -> QualtricsCall.Unknown
             }
 
@@ -77,6 +80,12 @@ object Extractor {
 
     private fun qualtricsCallFromSetStringProperty(call: MethodCall): QualtricsCall =
             QualtricsCall.SetStringProperty(
+                    call.argument(keyKey)!!,
+                    call.argument(valueKey)!!
+            )
+
+    private fun qualtricsCallFromSetNumberProperty(call: MethodCall): QualtricsCall =
+            QualtricsCall.SetNumberProperty(
                     call.argument(keyKey)!!,
                     call.argument(valueKey)!!
             )
