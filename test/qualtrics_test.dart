@@ -5,8 +5,8 @@ import 'package:mockito/mockito.dart';
 import 'mocks/mocks.dart';
 
 void main() {
-  Qualtrics sut;
-  MethodChannelMock methodChannelMock;
+  late Qualtrics sut;
+  late MethodChannelMock methodChannelMock;
 
   setUp(() {
     methodChannelMock = MethodChannelMock();
